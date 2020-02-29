@@ -1,24 +1,29 @@
-import numpy as np
-import torch
-from torch import nn
 from enum import Enum
 
+import numpy as np
+import torch
+
 from src.FeatureExtractors.BaseFE import BaseFE
+
 
 class MainLayers(Enum):
     Conv2D = 1
     Linear = 2
 
+
 class Activations(Enum):
     ReLU = 1
 
+
 class BatchNorm(Enum):
     BatchNorm2d = 1
+
 
 class Pooling(Enum):
     MaxPool2d = 1
     AdaptiveAvgPool2d = 2
     AvgPool2d = 3
+
 
 class TopologyFE(BaseFE):
     LayerMainType = 0
@@ -48,7 +53,7 @@ class TopologyFE(BaseFE):
 
             torch.nn.modules.pooling.MaxPool2d: self.handle_pooling(Pooling.MaxPool2d),
             torch.nn.modules.pooling.AdaptiveAvgPool2d: self.handle_pooling(Pooling.AdaptiveAvgPool2d),
-            torch.nn.modules.pooling.AvgPool2d : self.handle_pooling(Pooling.AvgPool2d)
+            torch.nn.modules.pooling.AvgPool2d: self.handle_pooling(Pooling.AvgPool2d)
         }
 
     def extract_feature_map(self):
@@ -94,4 +99,3 @@ class TopologyFE(BaseFE):
             row_to_fill[TopologyFE.Polling] = pooling_type.value
 
         return handler
-

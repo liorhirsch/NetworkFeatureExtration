@@ -1,6 +1,5 @@
-import torch
-import torchvision.models as models
 import pandas as pd
+import torch
 
 from src.FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
 from src.ModelClasses.Net2.Net2 import Net2

@@ -1,9 +1,10 @@
+from typing import List
+
 from src.FeatureExtractors import BaseFE
 from src.FeatureExtractors.ActivationsStatisticsFE import ActivationsStatisticsFE
 from src.FeatureExtractors.TopologyFE import TopologyFE
 from src.FeatureExtractors.WeightStatisticsFE import WeightStatisticsFE
 from src.ModelWithRows import ModelWithRows
-from typing import List
 
 
 class FeatureExtractor:

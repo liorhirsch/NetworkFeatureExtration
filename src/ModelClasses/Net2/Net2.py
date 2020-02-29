@@ -1,6 +1,6 @@
-import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
 
 class Net2(nn.Module):
 
@@ -18,5 +18,6 @@ class Net2(nn.Module):
         x = self.fc4(x)
         x = nn.Sigmoid()(x)
         return x
+
 
 net2 = Net2()

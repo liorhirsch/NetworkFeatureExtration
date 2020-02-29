@@ -1,12 +1,10 @@
 from typing import List
 
-import torch
 from pandas import np
 from scipy.stats import moment
 from torch.nn import Linear, Conv2d
 
 from src.FeatureExtractors.BaseFE import BaseFE
-from src.ModelWithRows import ModelWithRows
 from src.utils import pad_layer_outputs
 
 
@@ -18,11 +16,10 @@ class WeightStatisticsFE(BaseFE):
         self.MAX_LAYERS = 10
 
     def extract_feature_map(self):
-        layer_weights_for_each_row: List[Linear | Conv2d] = list(map(lambda row: row[0] ,self.model_with_rows.all_rows))
+        layer_weights_for_each_row: List[Linear | Conv2d] = list(map(lambda row: row[0], self.model_with_rows.all_rows))
 
         moment_map = [[], [], [], []]
         min_max_map = [[], []]
-
 
         for curr_layer in layer_weights_for_each_row:
             if type(curr_layer) == Linear:
@@ -43,4 +40,3 @@ class WeightStatisticsFE(BaseFE):
         min_max_map[1].append(max_per_neuron)
         for i, curr_moment in enumerate(all_moments_padded):
             moment_map[i].append(curr_moment)
-

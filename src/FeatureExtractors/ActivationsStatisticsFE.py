@@ -1,8 +1,8 @@
-from src.FeatureExtractors.BaseFE import BaseFE
-import torch
 import numpy as np
+import torch
 from scipy.stats import moment
 
+from src.FeatureExtractors.BaseFE import BaseFE
 from src.utils import pad_layer_outputs
 
 
@@ -23,7 +23,6 @@ class ActivationsStatisticsFE(BaseFE):
         self.calculate_moments_for_each_layer(moment_map, min_max_map)
 
         print(all_activations_in_important_layers)
-
 
     def calculate_moments_for_each_layer(self, moment_map, min_max_map):
         for layer_activations in all_activations_in_important_layers:
