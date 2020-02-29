@@ -3,6 +3,8 @@ import torch
 import numpy as np
 from scipy.stats import moment
 
+from src.utils import pad_layer_outputs
+
 
 class ActivationsStatisticsFE(BaseFE):
     def __init__(self, model_with_rows, dataset_x):
@@ -22,9 +24,6 @@ class ActivationsStatisticsFE(BaseFE):
 
         print(all_activations_in_important_layers)
 
-    def pad_layer_outputs(self, layer_statistics):
-        pad_size = self.MAX_LAYER_SIZE - len(layer_statistics)
-        return np.pad(layer_statistics, (0, pad_size))
 
     def calculate_moments_for_each_layer(self, moment_map, min_max_map):
         for layer_activations in all_activations_in_important_layers:
@@ -37,13 +36,11 @@ class ActivationsStatisticsFE(BaseFE):
             min_per_neuron = np.min(layer_activations_transposed, axis=1)
             max_per_neuron = np.max(layer_activations_transposed, axis=1)
 
-            min_max_map[0].append(self.pad_layer_outputs(min_per_neuron))
-            min_max_map[1].append(self.pad_layer_outputs(max_per_neuron))
+            min_max_map[0].append(pad_layer_outputs(min_per_neuron, self.MAX_LAYER_SIZE))
+            min_max_map[1].append(pad_layer_outputs(max_per_neuron, self.MAX_LAYER_SIZE))
 
             for m in range(0, 4):
-                pad_size = self.MAX_LAYER_SIZE - len(all_moments[m])
-                padded = np.pad(all_moments[m], (0, pad_size))
-                moment_map[m].append(padded)
+                moment_map[m].append(pad_layer_outputs(all_moments[m], self.MAX_LAYER_SIZE))
 
     def register_forward_hooks_to_important_layers(self, important_layer_in_each_row):
         for curr_row in self.model_with_rows.all_rows[:-1]:

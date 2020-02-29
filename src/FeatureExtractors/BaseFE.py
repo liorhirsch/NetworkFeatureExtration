@@ -1,6 +1,11 @@
-class BaseFE():
-    def __init__(self, model_with_rows):
-        self.model_with_rows = model_with_rows
+from src.ModelWithRows import ModelWithRows
+
+
+class BaseFE:
+    model_with_rows: ModelWithRows
+
+    def __init__(self, model_with_rows: ModelWithRows):
+        self.model_with_rows: ModelWithRows = model_with_rows
 
     def extract_feature_map(self):
         pass;
