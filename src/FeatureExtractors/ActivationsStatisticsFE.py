@@ -61,6 +61,7 @@ all_activations_in_important_layers = []
 
 
 def save_activations(self, input, output):
+    # TODO - add support for CNN
     global all_activations_in_important_layers
     all_activations_in_important_layers.append(output.detach().numpy())
     return None
