@@ -13,6 +13,9 @@ class MainLayers(Enum):
 
 class Activations(Enum):
     ReLU = 1
+    Softmax = 2
+    Tanh = 3
+
 
 
 class BatchNorm(Enum):
@@ -50,6 +53,8 @@ class TopologyFE(BaseFE):
             torch.nn.modules.batchnorm.BatchNorm1d: self.handle_batchnorm(BatchNorm.BatchNorm1d),
 
             torch.nn.modules.activation.ReLU: self.handle_activation(Activations.ReLU),
+            torch.nn.modules.activation.Softmax: self.handle_activation(Activations.Softmax),
+            torch.nn.modules.activation.Tanh: self.handle_activation(Activations.Tanh),
 
             torch.nn.modules.dropout.Dropout: self.handle_dropout,
 
@@ -59,8 +64,6 @@ class TopologyFE(BaseFE):
         }
 
     def extract_feature_map(self):
-        print(self.all_layers)
-
         topology_map = np.zeros((len(self.model_with_rows.all_rows), 10))
 
         for i, curr_row in enumerate(self.model_with_rows.all_rows):

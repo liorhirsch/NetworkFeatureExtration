@@ -22,7 +22,7 @@ class ActivationsStatisticsFE(BaseFE):
         self.model_with_rows.model(torch.Tensor(self.dataset_x))
         self.calculate_moments_for_each_layer(moment_map, min_max_map)
 
-        print(all_activations_in_important_layers)
+        return np.array([*moment_map, *min_max_map])
 
     def calculate_moments_for_each_layer(self, moment_map, min_max_map):
         for layer_activations in all_activations_in_important_layers:

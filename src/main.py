@@ -15,6 +15,7 @@ def load_checkpoint(filepath):
     model.load_state_dict(checkpoint['state_dict'])
     for parameter in model.parameters():
         parameter.requires_grad = False
+        # parameter.T.data.requires_grad = True
 
     model.eval()
 
