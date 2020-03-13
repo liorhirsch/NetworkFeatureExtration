@@ -28,8 +28,9 @@ class ActivationsStatisticsFE(BaseFE):
         for layer_activations in all_activations_in_important_layers:
             layer_activations_transposed = np.array(layer_activations).T
 
+            # TODO check that mean = first moment
             mean = np.mean(layer_activations_transposed, axis=1)
-            other_moments = moment(layer_activations_transposed, [2, 3, 4], axis=1)
+            other_moments = moment(layer_activations_transposed, [1, 2, 3, 4], axis=1)
             all_moments = [mean, *other_moments]
 
             min_per_neuron = np.min(layer_activations_transposed, axis=1)

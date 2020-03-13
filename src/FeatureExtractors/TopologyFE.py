@@ -17,6 +17,7 @@ class Activations(Enum):
 
 class BatchNorm(Enum):
     BatchNorm2d = 1
+    BatchNorm1d = 2
 
 
 class Pooling(Enum):
@@ -46,6 +47,7 @@ class TopologyFE(BaseFE):
             torch.nn.modules.linear.Linear: self.handle_linear,
 
             torch.nn.modules.batchnorm.BatchNorm2d: self.handle_batchnorm(BatchNorm.BatchNorm2d),
+            torch.nn.modules.batchnorm.BatchNorm1d: self.handle_batchnorm(BatchNorm.BatchNorm1d),
 
             torch.nn.modules.activation.ReLU: self.handle_activation(Activations.ReLU),
 
