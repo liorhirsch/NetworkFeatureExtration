@@ -15,6 +15,7 @@ class Activations(Enum):
     ReLU = 1
     Softmax = 2
     Tanh = 3
+    Sigmoid = 4
 
 
 
@@ -55,6 +56,7 @@ class TopologyFE(BaseFE):
             torch.nn.modules.activation.ReLU: self.handle_activation(Activations.ReLU),
             torch.nn.modules.activation.Softmax: self.handle_activation(Activations.Softmax),
             torch.nn.modules.activation.Tanh: self.handle_activation(Activations.Tanh),
+            torch.nn.modules.activation.Sigmoid: self.handle_activation(Activations.Sigmoid),
 
             torch.nn.modules.dropout.Dropout: self.handle_dropout,
 

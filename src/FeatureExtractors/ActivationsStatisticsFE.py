@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-from scipy.stats import moment
+from scipy.stats import variation, skew, kurtosis
 
 from src.FeatureExtractors.BaseFE import BaseFE
 from src.utils import pad_layer_outputs
@@ -28,10 +28,12 @@ class ActivationsStatisticsFE(BaseFE):
         for layer_activations in all_activations_in_important_layers:
             layer_activations_transposed = np.array(layer_activations).T
 
-            # TODO check that mean = first moment
             mean = np.mean(layer_activations_transposed, axis=1)
-            other_moments = moment(layer_activations_transposed, [1, 2, 3, 4], axis=1)
-            all_moments = [mean, *other_moments]
+            variation_val = variation(layer_activations_transposed, axis=1)
+            skew_val = skew(layer_activations_transposed, axis=1)
+            kurtosis_val = kurtosis(layer_activations_transposed, axis=1)
+
+            all_moments = [mean, variation_val, skew_val, kurtosis_val]
 
             min_per_neuron = np.min(layer_activations_transposed, axis=1)
             max_per_neuron = np.max(layer_activations_transposed, axis=1)

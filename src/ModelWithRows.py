@@ -24,7 +24,10 @@ class ModelWithRows():
         all_rows = []
         curr_row = []
         for curr_layer in self.all_layers:
-            if type(curr_layer) in self.main_layer_types and len(curr_row) > 0:
+
+            if type(curr_layer) in self.main_layer_types and \
+               len(curr_row) > 0 and \
+               any(type(l) in self.main_layer_types for l in curr_row) :
                 all_rows.append(curr_row)
                 curr_row = []
 

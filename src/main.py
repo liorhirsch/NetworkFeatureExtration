@@ -1,11 +1,11 @@
+import os
+import time
+import numpy as np
 import pandas as pd
 import torch
 
+
 from src.FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
-from src.ModelClasses.Net2.Net2 import Net2
-
-import os
-
 from src.ModelClasses.NetX.netX import NetX
 
 
@@ -15,13 +15,15 @@ def load_checkpoint(filepath):
     model.load_state_dict(checkpoint['state_dict'])
     for parameter in model.parameters():
         parameter.requires_grad = False
-        # parameter.T.data.requires_grad = True
 
     model.eval()
 
     return model
 
-for root, dirs, files in os.walk("../Fully Connected Training/Regression/"):
+for root, dirs, files in os.walk("../Fully Connected Training/"):
+    load_times = []
+    fe_times = []
+
     if ('X_to_train.csv' not in files):
         continue
 
@@ -31,10 +33,21 @@ for root, dirs, files in os.walk("../Fully Connected Training/Regression/"):
 
     for file in model_files:
 
+        start = time.time()
         model = load_checkpoint(os.path.join(root, file))
+        end = time.time()
+        load_times.append(end - start)
 
+        start = time.time()
         feature_extractor = FeatureExtractor(model, X._values)
         feature_extractor.extract_features()
+        end = time.time()
+        fe_times.append(end-start)
+
+    print("Len dataset : ", len(X))
+    print("Load Times : ", np.mean(load_times), " | Min : ", min(load_times), " | Max : ", max(load_times))
+    print("FE Times : ", np.mean(fe_times), " | Min : ", min(fe_times), " | Max : ", max(fe_times))
+    print("Done ", root)
 
 # model = NetX()
 #
