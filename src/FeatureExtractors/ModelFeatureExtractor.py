@@ -19,3 +19,4 @@ class FeatureExtractor:
 
     def extract_features(self):
         a = [curr_fe.extract_feature_map() for curr_fe in self.all_feature_extractors]
+        return a

@@ -3,7 +3,7 @@ import torch
 from scipy.stats import variation, skew, kurtosis
 
 from src.FeatureExtractors.BaseFE import BaseFE
-from src.utils import pad_layer_outputs
+from src.utils import pad_with_columns, pad_with_rows
 
 
 class ActivationsStatisticsFE(BaseFE):
@@ -21,15 +21,19 @@ class ActivationsStatisticsFE(BaseFE):
         self.register_forward_hooks_to_important_layers(important_layer_in_each_row)
         self.model_with_rows.model(torch.Tensor(self.dataset_x))
         self.calculate_moments_for_each_layer(moment_map, min_max_map)
+        activations_map = np.array([*moment_map, *min_max_map])
 
-        return np.array([*moment_map, *min_max_map])
+        activations_map = list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),activations_map))
+        return np.array(activations_map)
 
     def calculate_moments_for_each_layer(self, moment_map, min_max_map):
+        base_feature_map = np.zeros((self.MAX_LAYERS, self.MAX_LAYER_SIZE))
+
         for layer_activations in all_activations_in_important_layers:
             layer_activations_transposed = np.array(layer_activations).T
 
             mean = np.mean(layer_activations_transposed, axis=1)
-            variation_val = variation(layer_activations_transposed, axis=1)
+            variation_val = np.std(layer_activations_transposed, axis=1)
             skew_val = skew(layer_activations_transposed, axis=1)
             kurtosis_val = kurtosis(layer_activations_transposed, axis=1)
 
@@ -38,11 +42,13 @@ class ActivationsStatisticsFE(BaseFE):
             min_per_neuron = np.min(layer_activations_transposed, axis=1)
             max_per_neuron = np.max(layer_activations_transposed, axis=1)
 
-            min_max_map[0].append(pad_layer_outputs(min_per_neuron, self.MAX_LAYER_SIZE))
-            min_max_map[1].append(pad_layer_outputs(max_per_neuron, self.MAX_LAYER_SIZE))
+            min_max_map[0].append(pad_with_columns(min_per_neuron, self.MAX_LAYER_SIZE))
+            min_max_map[1].append(pad_with_columns(max_per_neuron, self.MAX_LAYER_SIZE))
 
             for m in range(0, 4):
-                moment_map[m].append(pad_layer_outputs(all_moments[m], self.MAX_LAYER_SIZE))
+                moment_map[m].append(pad_with_columns(all_moments[m], self.MAX_LAYER_SIZE))
+
+
 
     def register_forward_hooks_to_important_layers(self, important_layer_in_each_row):
         for curr_row in self.model_with_rows.all_rows[:-1]:
@@ -60,7 +66,6 @@ all_activations_in_important_layers = []
 
 
 def save_activations(self, input, output):
-    # TODO - add support for CNN
     global all_activations_in_important_layers
     all_activations_in_important_layers.append(output.detach().numpy())
     return None
