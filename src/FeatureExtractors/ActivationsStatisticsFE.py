@@ -13,7 +13,7 @@ class ActivationsStatisticsFE(BaseFE):
         self.MAX_LAYERS = 10
         self.dataset_x = dataset_x
 
-    def extract_feature_map(self):
+    def extract_feature_map(self, layer_index):
         important_layer_in_each_row = []
         moment_map = [[], [], [], []]
         min_max_map = [[], []]
@@ -23,8 +23,9 @@ class ActivationsStatisticsFE(BaseFE):
         self.calculate_moments_for_each_layer(moment_map, min_max_map)
         activations_map = np.array([*moment_map, *min_max_map])
 
-        activations_map = list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),activations_map))
-        return np.array(activations_map)
+        activations_map = np.array(list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),activations_map)))
+
+        return (activations_map, activations_map[layer_index])
 
     def calculate_moments_for_each_layer(self, moment_map, min_max_map):
         base_feature_map = np.zeros((self.MAX_LAYERS, self.MAX_LAYER_SIZE))

@@ -42,14 +42,14 @@ class TopologyFE(BaseFE):
             torch.nn.modules.dropout.Dropout: self.handle_dropout,
         }
 
-    def extract_feature_map(self):
+    def extract_feature_map(self, layer_index):
         topology_map = np.zeros((self.MAX_LAYERS, 10))
 
         for i, curr_row in enumerate(self.model_with_rows.all_rows):
             for curr_layer in curr_row:
                 self.layer_type_to_function[type(curr_layer)](curr_layer, topology_map[i])
 
-        return topology_map
+        return (topology_map, topology_map[layer_index])
 
     def handle_linear(self, curr_layer, row_to_fill):
         row_to_fill[TopologyFE.InFeatures] = curr_layer.in_features

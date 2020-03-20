@@ -15,7 +15,7 @@ class WeightStatisticsFE(BaseFE):
         self.MAX_LAYER_SIZE = 1000
         self.MAX_LAYERS = 10
 
-    def extract_feature_map(self):
+    def extract_feature_map(self, layer_index):
         layer_weights_for_each_row: List[Linear] = list(map(lambda row: row[0], self.model_with_rows.all_rows))
 
         moment_map = [[], [], [], []]
@@ -27,8 +27,8 @@ class WeightStatisticsFE(BaseFE):
 
         weights_map = np.array([*moment_map, *min_max_map])
 
-        weights_map = list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),weights_map))
-        return np.array(weights_map)
+        weights_map = np.array(list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),weights_map)))
+        return (weights_map, weights_map[layer_index])
 
     def handle_linear_layer(self, curr_layer, min_max_map, moment_map):
         linear_layer: Linear = curr_layer

@@ -17,6 +17,6 @@ class FeatureExtractor:
             WeightStatisticsFE(self.model_with_rows)
         ]
 
-    def extract_features(self):
-        a = [curr_fe.extract_feature_map() for curr_fe in self.all_feature_extractors]
+    def extract_features(self, layer_index):
+        a = [curr_fe.extract_feature_map(layer_index) for curr_fe in self.all_feature_extractors]
         return a

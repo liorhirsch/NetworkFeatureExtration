@@ -4,11 +4,11 @@
     <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/BaseFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/BaseFE.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/ModelFeatureExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/ModelFeatureExtractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/TopologyFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/TopologyFE.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/WeightStatisticsFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/WeightStatisticsFE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ModelWithRows.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModelWithRows.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1582963236945</updated>
-      <workItem from="1582963238117" duration="49361000" />
+      <workItem from="1582963238117" duration="50145000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -121,7 +121,13 @@
       <option name="presentableId" value="LOCAL‎00006" />
       <updated>1584180668542</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎00007" summary="- Remove the use of CNN">
+      <created>1584710699055</created>
+      <option name="number" value="LOCAL‎00007" />
+      <option name="presentableId" value="LOCAL‎00007" />
+      <updated>1584710699055</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +151,8 @@
     <MESSAGE value="- Add support for 1d batch norm&#10;- Run Feature extraction for all datasets" />
     <MESSAGE value="- Add support for Softmax, Tanh activation&#10;-" />
     <MESSAGE value="- Change moment calculations to better ones&#10;- Add Sigmoid activation" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Change moment calculations to better ones&#10;- Add Sigmoid activation" />
+    <MESSAGE value="- Remove the use of CNN" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Remove the use of CNN" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -165,6 +172,16 @@
           <line>287</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/FeatureExtractors/TopologyFE.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -174,6 +191,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/NetworkFeatureExtration$main.coverage" NAME="main Coverage Results" MODIFIED="1584207801760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/NetworkFeatureExtration$main.coverage" NAME="main Coverage Results" MODIFIED="1584711465028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

@@ -40,7 +40,7 @@ for root, dirs, files in os.walk("../Fully Connected Training/"):
 
         start = time.time()
         feature_extractor = FeatureExtractor(model, X._values)
-        feature_extractor.extract_features()
+        feature_extractor.extract_features(layer_index=1)
         end = time.time()
         fe_times.append(end-start)
 
