@@ -25,7 +25,7 @@ class ActivationsStatisticsFE(BaseFE):
 
         activations_map = np.array(list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),activations_map)))
 
-        return (activations_map, activations_map[layer_index])
+        return (activations_map, activations_map[:,layer_index,:])
 
     def calculate_moments_for_each_layer(self, moment_map, min_max_map):
         base_feature_map = np.zeros((self.MAX_LAYERS, self.MAX_LAYER_SIZE))

@@ -28,7 +28,8 @@ class WeightStatisticsFE(BaseFE):
         weights_map = np.array([*moment_map, *min_max_map])
 
         weights_map = np.array(list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),weights_map)))
-        return (weights_map, weights_map[layer_index])
+
+        return (weights_map, weights_map[:,layer_index,:])
 
     def handle_linear_layer(self, curr_layer, min_max_map, moment_map):
         linear_layer: Linear = curr_layer
