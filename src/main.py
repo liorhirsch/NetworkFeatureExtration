@@ -5,8 +5,8 @@ import pandas as pd
 import torch
 
 
-from src.FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
-from src.ModelClasses.NetX.netX import NetX
+from .FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
+from .ModelClasses.NetX.netX import NetX
 
 
 def load_checkpoint(filepath):
