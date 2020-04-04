@@ -20,7 +20,7 @@ def load_checkpoint(filepath):
 
     return model
 
-def get_FM_for_model(model_path, data_path, layer_index):
+def load_model_and_data(model_path, data_path, layer_index):
     """
     :param model_path:
     :param data_path:
@@ -29,7 +29,11 @@ def get_FM_for_model(model_path, data_path, layer_index):
     """
     X = pd.read_csv(data_path)
     model = load_checkpoint(model_path)
-    feature_extractor = FeatureExtractor(model, X._values)
+
+    return model, X
+
+def get_fm_for_model_and_layer(model, data, layer_index):
+    feature_extractor = FeatureExtractor(model, data._values)
     return feature_extractor.extract_features(layer_index)
 
 def main():

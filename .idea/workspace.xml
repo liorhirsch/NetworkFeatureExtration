@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582963236945</updated>
       <workItem from="1582963238117" duration="52669000" />
-      <workItem from="1586011434102" duration="1507000" />
+      <workItem from="1586011434102" duration="1957000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -141,7 +138,13 @@
       <option name="presentableId" value="LOCAL‎00010" />
       <updated>1586012207661</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎00011" summary="Add get_FM_for_model function">
+      <created>1586012961895</created>
+      <option name="number" value="LOCAL‎00011" />
+      <option name="presentableId" value="LOCAL‎00011" />
+      <updated>1586012961895</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +174,8 @@
     <MESSAGE value="- extract_feature method gets the layer_index and return also the layer feature map for each Extractor type" />
     <MESSAGE value="- Fix layer feature map extractor" />
     <MESSAGE value="Fix Imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Imports" />
+    <MESSAGE value="Add get_FM_for_model function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add get_FM_for_model function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
