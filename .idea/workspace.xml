@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="" />
+    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/BaseFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/BaseFE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/ModelFeatureExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/ModelFeatureExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/TopologyFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/TopologyFE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FeatureExtractors/WeightStatisticsFE.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/FeatureExtractors/WeightStatisticsFE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,8 @@
       <option name="presentableId" value="Default" />
       <updated>1582963236945</updated>
       <workItem from="1582963238117" duration="52669000" />
-      <workItem from="1586011434102" duration="1957000" />
+      <workItem from="1586011434102" duration="2837000" />
+      <workItem from="1586019272632" duration="273000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -144,7 +153,13 @@
       <option name="presentableId" value="LOCAL‎00011" />
       <updated>1586012961895</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎00012" summary="split load model and get fm to two function">
+      <created>1586013538284</created>
+      <option name="number" value="LOCAL‎00012" />
+      <option name="presentableId" value="LOCAL‎00012" />
+      <updated>1586013538284</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +190,8 @@
     <MESSAGE value="- Fix layer feature map extractor" />
     <MESSAGE value="Fix Imports" />
     <MESSAGE value="Add get_FM_for_model function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add get_FM_for_model function" />
+    <MESSAGE value="split load model and get fm to two function" />
+    <option name="LAST_COMMIT_MESSAGE" value="split load model and get fm to two function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

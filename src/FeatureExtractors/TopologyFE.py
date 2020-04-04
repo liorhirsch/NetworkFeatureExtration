@@ -3,7 +3,7 @@ from enum import Enum
 import numpy as np
 import torch
 
-from src.FeatureExtractors.BaseFE import BaseFE
+from .FeatureExtractors.BaseFE import BaseFE
 
 
 class Activations(Enum):

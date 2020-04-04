@@ -2,8 +2,8 @@ import numpy as np
 import torch
 from scipy.stats import variation, skew, kurtosis
 
-from src.FeatureExtractors.BaseFE import BaseFE
-from src.utils import pad_with_columns, pad_with_rows
+from .BaseFE import BaseFE
+from ..utils import pad_with_columns, pad_with_rows
 
 
 class ActivationsStatisticsFE(BaseFE):

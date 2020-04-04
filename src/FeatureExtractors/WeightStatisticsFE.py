@@ -4,8 +4,8 @@ import numpy as np
 from scipy.stats import skew, kurtosis
 from torch.nn import Linear
 
-from src.FeatureExtractors.BaseFE import BaseFE
-from src.utils import pad_with_columns, pad_with_rows
+from .BaseFE import BaseFE
+from ..utils import pad_with_columns, pad_with_rows
 
 
 class WeightStatisticsFE(BaseFE):

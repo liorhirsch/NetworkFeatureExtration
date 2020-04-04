@@ -1,4 +1,4 @@
-from src.ModelWithRows import ModelWithRows
+from ..ModelWithRows import ModelWithRows
 
 
 class BaseFE:

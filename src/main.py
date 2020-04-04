@@ -20,7 +20,7 @@ def load_checkpoint(filepath):
 
     return model
 
-def load_model_and_data(model_path, data_path, layer_index):
+def load_model_and_data(model_path, data_path):
     """
     :param model_path:
     :param data_path:
@@ -29,12 +29,11 @@ def load_model_and_data(model_path, data_path, layer_index):
     """
     X = pd.read_csv(data_path)
     model = load_checkpoint(model_path)
-
     return model, X
 
 def get_fm_for_model_and_layer(model, data, layer_index):
     feature_extractor = FeatureExtractor(model, data._values)
-    return feature_extractor.extract_features(layer_index)
+    return feature_extractor, feature_extractor.extract_features(layer_index)
 
 def main():
     for root, dirs, files in os.walk("../Fully Connected Training/"):
