@@ -20,48 +20,44 @@ def load_checkpoint(filepath):
 
     return model
 
-for root, dirs, files in os.walk("../Fully Connected Training/"):
-    load_times = []
-    fe_times = []
+def get_FM_for_model(model_path, data_path, layer_index):
+    """
+    :param model_path:
+    :param data_path:
+    :param layer_index:
+    :return:
+    """
+    X = pd.read_csv(data_path)
+    model = load_checkpoint(model_path)
+    feature_extractor = FeatureExtractor(model, X._values)
+    return feature_extractor.extract_features(layer_index)
 
-    if ('X_to_train.csv' not in files):
-        continue
+def main():
+    for root, dirs, files in os.walk("../Fully Connected Training/"):
+        load_times = []
+        fe_times = []
 
-    X = pd.read_csv(root + '/X_to_train.csv')
+        if ('X_to_train.csv' not in files):
+            continue
 
-    model_files = filter(lambda file_name: file_name.endswith('.pt'), files)
+        X = pd.read_csv(root + '/X_to_train.csv')
 
-    for file in model_files:
+        model_files = filter(lambda file_name: file_name.endswith('.pt'), files)
 
-        start = time.time()
-        model = load_checkpoint(os.path.join(root, file))
-        end = time.time()
-        load_times.append(end - start)
+        for file in model_files:
 
-        start = time.time()
-        feature_extractor = FeatureExtractor(model, X._values)
-        feature_extractor.extract_features(layer_index=1)
-        end = time.time()
-        fe_times.append(end-start)
+            start = time.time()
+            model = load_checkpoint(os.path.join(root, file))
+            end = time.time()
+            load_times.append(end - start)
 
-    print("Len dataset : ", len(X))
-    print("Load Times : ", np.mean(load_times), " | Min : ", min(load_times), " | Max : ", max(load_times))
-    print("FE Times : ", np.mean(fe_times), " | Min : ", min(fe_times), " | Max : ", max(fe_times))
-    print("Done ", root)
+            start = time.time()
 
-# model = NetX()
-#
-# model.load_state_dict(torch.load("./ModelClasses/Net2/net2model.pt"))
-# model.eval()
-#
-# X = pd.read_csv('./ModelClasses/Net2/X_to_train.csv')
-#
-# # model.load_state_dict(torch.load("./ModelClasses/Net2/net2model.pt"))
-# # model.eval()
-# #
-# # X = pd.read_csv('./ModelClasses/Net2/X_to_train.csv')
-#
-# # resnet18
-# # model = models.vgg19_bn(pretrained=True)
-# feature_extractor = FeatureExtractor(model, X._values)
-# feature_extractor.extract_features()
+            end = time.time()
+            fe_times.append(end-start)
+
+        print("Len dataset : ", len(X))
+        print("Load Times : ", np.mean(load_times), " | Min : ", min(load_times), " | Max : ", max(load_times))
+        print("FE Times : ", np.mean(fe_times), " | Min : ", min(fe_times), " | Max : ", max(fe_times))
+        print("Done ", root)
+
