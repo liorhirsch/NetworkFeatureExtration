@@ -3,13 +3,15 @@ import time
 import numpy as np
 import pandas as pd
 import torch
-
+from torch import optim
 
 from .FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
 from .ModelClasses.NetX.netX import NetX
 
 
+# TODO -  check ./Fully Connected Training/Regression\kc1-numeric\netX7model.pt
 def load_checkpoint(filepath):
+    # TODO - get device from outside
     checkpoint = torch.load(filepath, map_location=torch.device('cpu'))
     model = checkpoint['model']
     model.load_state_dict(checkpoint['state_dict'])
@@ -18,7 +20,10 @@ def load_checkpoint(filepath):
 
     model.eval()
 
-    return model
+    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    optimizer.load_state_dict(checkpoint['optimizer'])
+
+    return model, optimizer
 
 def load_model_and_data(model_path, data_path):
     """
