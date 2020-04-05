@@ -33,8 +33,8 @@ def load_model_and_data(model_path, data_path):
     :return:
     """
     X = pd.read_csv(data_path)
-    model = load_checkpoint(model_path)
-    return model, X
+    model, optimizer = load_checkpoint(model_path)
+    return model,optimizer, X
 
 def get_fm_for_model_and_layer(model, data, layer_index):
     feature_extractor = FeatureExtractor(model, data._values)
