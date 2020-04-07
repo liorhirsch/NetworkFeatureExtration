@@ -32,16 +32,17 @@ def load_checkpoint(filepath) -> LoadedModel:
 
     return LoadedModel(model, optimizer, mission_type, loss)
 
-def load_model_and_data(model_path, data_path):
+def load_model_and_data(model_path, x_path, y_path):
     """
     :param model_path:
     :param data_path:
     :param layer_index:
     :return:
     """
-    X = pd.read_csv(data_path)
+    X = pd.read_csv(x_path)
+    Y = pd.read_csv(y_path)
     loaded_model = load_checkpoint(model_path)
-    return loaded_model, X
+    return loaded_model, X, Y
 
 def get_fm_for_model_and_layer(model, data, layer_index):
     feature_extractor = FeatureExtractor(model, data._values)
