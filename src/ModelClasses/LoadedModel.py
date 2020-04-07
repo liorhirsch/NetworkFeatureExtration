@@ -6,8 +6,8 @@ from torch.optim.optimizer import Optimizer
 
 
 class MissionTypes(Enum):
-    Regression: auto()
-    Classification: auto()
+    Regression = auto()
+    Classification = auto()
 
 
 class LoadedModel:
