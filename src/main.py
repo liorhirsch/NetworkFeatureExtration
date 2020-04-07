@@ -11,7 +11,7 @@ from .ModelClasses.NetX.netX import NetX
 
 
 # TODO -  check ./Fully Connected Training/Regression\kc1-numeric\netX7model.pt
-def load_checkpoint(filepath):
+def load_checkpoint(filepath) -> LoadedModel:
     # TODO - get device from outside
     checkpoint = torch.load(filepath, map_location=torch.device('cpu'))
     model = checkpoint['model']
@@ -40,8 +40,8 @@ def load_model_and_data(model_path, data_path):
     :return:
     """
     X = pd.read_csv(data_path)
-    model, optimizer = load_checkpoint(model_path)
-    return model,optimizer, X
+    loaded_model = load_checkpoint(model_path)
+    return loaded_model, X
 
 def get_fm_for_model_and_layer(model, data, layer_index):
     feature_extractor = FeatureExtractor(model, data._values)
