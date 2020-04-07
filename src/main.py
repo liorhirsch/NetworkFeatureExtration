@@ -5,6 +5,7 @@ import pandas as pd
 import torch
 from torch import optim
 
+from .ModelClasses.LoadedModel import MissionTypes, LoadedModel
 from .FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
 from .ModelClasses.NetX.netX import NetX
 
@@ -23,7 +24,13 @@ def load_checkpoint(filepath):
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
     optimizer.load_state_dict(checkpoint['optimizer'])
 
-    return model, optimizer
+    mission_type = MissionTypes.Classification if checkpoint['mission_type'] == 'Classification' \
+                                               else MissionTypes.Regression
+    loss = checkpoint['loss']
+
+
+
+    return LoadedModel(model, optimizer, mission_type, loss)
 
 def load_model_and_data(model_path, data_path):
     """

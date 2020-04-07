@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="" />
+    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ModelClasses/LoadedModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +81,7 @@
       <updated>1582963236945</updated>
       <workItem from="1582963238117" duration="52669000" />
       <workItem from="1586011434102" duration="2837000" />
-      <workItem from="1586019272632" duration="4119000" />
+      <workItem from="1586019272632" duration="5813000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -169,7 +173,13 @@
       <option name="presentableId" value="LOCAL‎00015" />
       <updated>1586104203050</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎00016" summary="load optimizer from model">
+      <created>1586104268353</created>
+      <option name="number" value="LOCAL‎00016" />
+      <option name="presentableId" value="LOCAL‎00016" />
+      <updated>1586104268353</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +237,11 @@
           <url>file://$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py</url>
           <line>27</line>
           <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/main.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="114" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
