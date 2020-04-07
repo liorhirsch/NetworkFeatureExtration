@@ -1,4 +1,5 @@
 import torch
+from numpy import np
 from torch import nn
 
 
@@ -36,6 +37,6 @@ class ModelWithRows():
             curr_row.append(curr_layer)
 
         if (len(curr_row)) > 0:
-            all_rows.append(curr_row)
+            all_rows.append(np.array(curr_row))
 
         return all_rows
