@@ -31,7 +31,7 @@ class ModelWithRows():
         curr_row = []
         for curr_layer in self.all_layers:
             if self.is_to_split_row(curr_layer, curr_row):
-                all_rows.append(curr_row)
+                all_rows.append(np.array(curr_row))
                 curr_row = []
 
             curr_row.append(curr_layer)
@@ -39,4 +39,4 @@ class ModelWithRows():
         if (len(curr_row)) > 0:
             all_rows.append(np.array(curr_row))
 
-        return all_rows
+        return np.array(all_rows)
