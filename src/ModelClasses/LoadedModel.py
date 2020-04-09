@@ -13,11 +13,11 @@ class MissionTypes(Enum):
 class LoadedModel:
     model: nn.Module
     optimizer: Optimizer
-    missionType: MissionTypes
+    mission_type: MissionTypes
     loss: _Loss
 
     def __init__(self, model, optimizer, missionType, loss):
         self.model = model
         self.optimizer = optimizer
-        self.missionType = missionType
+        self.mission_type = missionType
         self.loss = loss
