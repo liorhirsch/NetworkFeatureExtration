@@ -19,7 +19,7 @@ class ActivationsStatisticsFE(BaseFE):
 
         unregister_hook_functions = self.build_register_forward_hooks_to_important_layers()
         self.model_with_rows.model(torch.Tensor(self.dataset_x))
-        [x() for x in unregister_hook_functions]
+        [x.remove() for x in unregister_hook_functions]
         self.calculate_moments_for_each_layer(moment_map, min_max_map)
         activations_map = np.array([*moment_map, *min_max_map])
 
