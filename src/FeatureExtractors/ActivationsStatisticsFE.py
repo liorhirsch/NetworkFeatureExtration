@@ -14,12 +14,12 @@ class ActivationsStatisticsFE(BaseFE):
         self.dataset_x = dataset_x
 
     def extract_feature_map(self, layer_index):
-        important_layer_in_each_row = []
         moment_map = [[], [], [], []]
         min_max_map = [[], []]
 
-        self.register_forward_hooks_to_important_layers(important_layer_in_each_row)
+        unregister_hook_functions = self.build_register_forward_hooks_to_important_layers()
         self.model_with_rows.model(torch.Tensor(self.dataset_x))
+        [x() for x in unregister_hook_functions]
         self.calculate_moments_for_each_layer(moment_map, min_max_map)
         activations_map = np.array([*moment_map, *min_max_map])
 
@@ -51,7 +51,8 @@ class ActivationsStatisticsFE(BaseFE):
 
 
 
-    def register_forward_hooks_to_important_layers(self, important_layer_in_each_row):
+    def build_register_forward_hooks_to_important_layers(self):
+        unregister_hook_function = []
         for curr_row in self.model_with_rows.all_rows[:-1]:
             most_imporatant_layer = curr_row[0]
 
@@ -59,8 +60,9 @@ class ActivationsStatisticsFE(BaseFE):
                 if ('activation' in str(type(curr_layer))):
                     most_imporatant_layer = curr_layer
 
-            most_imporatant_layer.register_forward_hook(save_activations)
-            important_layer_in_each_row.append(most_imporatant_layer)
+            unregister_hook_function.append(most_imporatant_layer.register_forward_hook(save_activations))
+
+        return unregister_hook_function
 
 
 all_activations_in_important_layers = []
