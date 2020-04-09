@@ -17,7 +17,7 @@ class BatchNorm(Enum):
     BatchNorm1d = 1
 
 
-class TopologyFE(Enum):
+class TopologyFE(BaseFE):
     BatchNorm = 0
     Activation = 1
     Dropout = 2
