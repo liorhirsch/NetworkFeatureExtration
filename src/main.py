@@ -10,9 +10,7 @@ from .FeatureExtractors.ModelFeatureExtractor import FeatureExtractor
 from .ModelClasses.NetX.netX import NetX
 
 
-# TODO -  check ./Fully Connected Training/Regression\kc1-numeric\netX7model.pt
 def load_checkpoint(filepath, device) -> LoadedModel:
-    # TODO - get device from outside
     checkpoint = torch.load(filepath, map_location=torch.device(device))
     model = checkpoint['model']
     model.load_state_dict(checkpoint['state_dict'])
