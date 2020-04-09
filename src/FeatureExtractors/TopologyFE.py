@@ -17,12 +17,12 @@ class BatchNorm(Enum):
     BatchNorm1d = 1
 
 
-class TopologyFE(BaseFE):
-    BatchNorm = 1
-    Activation = 2
-    Dropout = 3
-    InFeatures = 4
-    OutFeatures = 5
+class TopologyFE(Enum):
+    BatchNorm = 0
+    Activation = 1
+    Dropout = 2
+    InFeatures = 3
+    OutFeatures = 4
 
     def __init__(self, model_with_rows):
         super(TopologyFE, self).__init__(model_with_rows)
