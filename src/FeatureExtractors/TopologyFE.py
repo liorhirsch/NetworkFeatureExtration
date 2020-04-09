@@ -43,7 +43,7 @@ class TopologyFE(BaseFE):
         }
 
     def extract_feature_map(self, layer_index):
-        topology_map = np.zeros((self.MAX_LAYERS, 10))
+        topology_map = np.zeros((self.MAX_LAYERS, 5))
 
         for i, curr_row in enumerate(self.model_with_rows.all_rows):
             for curr_layer in curr_row:
