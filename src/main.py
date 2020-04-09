@@ -11,9 +11,9 @@ from .ModelClasses.NetX.netX import NetX
 
 
 # TODO -  check ./Fully Connected Training/Regression\kc1-numeric\netX7model.pt
-def load_checkpoint(filepath) -> LoadedModel:
+def load_checkpoint(filepath, device) -> LoadedModel:
     # TODO - get device from outside
-    checkpoint = torch.load(filepath, map_location=torch.device('cpu'))
+    checkpoint = torch.load(filepath, map_location=torch.device(device))
     model = checkpoint['model']
     model.load_state_dict(checkpoint['state_dict'])
     for parameter in model.parameters():
@@ -32,7 +32,7 @@ def load_checkpoint(filepath) -> LoadedModel:
 
     return LoadedModel(model, optimizer, mission_type, loss)
 
-def load_model_and_data(model_path, x_path, y_path):
+def load_model_and_data(model_path, x_path, y_path, device):
     """
     :param model_path:
     :param data_path:
@@ -41,7 +41,7 @@ def load_model_and_data(model_path, x_path, y_path):
     """
     X = pd.read_csv(x_path)
     Y = pd.read_csv(y_path)
-    loaded_model = load_checkpoint(model_path)
+    loaded_model = load_checkpoint(model_path, device)
     return loaded_model, X, Y
 
 def get_fm_for_model_and_layer(model, data, layer_index):
