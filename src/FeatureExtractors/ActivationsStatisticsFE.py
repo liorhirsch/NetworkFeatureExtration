@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from scipy.stats import variation, skew, kurtosis
-
+from sklearn.preprocessing import MinMaxScaler
 from .BaseFE import BaseFE
 from ..utils import pad_with_columns, pad_with_rows
 
@@ -33,11 +33,14 @@ class ActivationsStatisticsFE(BaseFE):
 
         for layer_activations in all_activations_in_important_layers:
             layer_activations_transposed = np.array(layer_activations).T
+            scaler = MinMaxScaler()
+            layer_activations_transposed_scaled = scaler.fit_transform(layer_activations).T
+
 
             mean = np.mean(layer_activations_transposed, axis=1)
             variation_val = np.std(layer_activations_transposed, axis=1)
-            skew_val = skew(layer_activations_transposed, axis=1)
-            kurtosis_val = kurtosis(layer_activations_transposed, axis=1)
+            skew_val = skew(layer_activations_transposed_scaled, axis=1)
+            kurtosis_val = kurtosis(layer_activations_transposed_scaled, axis=1)
 
             all_moments = [mean, variation_val, skew_val, kurtosis_val]
 
