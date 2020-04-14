@@ -16,4 +16,4 @@ def get_scaler_exponent(matrix):
     abs_matrix = np.abs(matrix)
     min_val = np.where(abs_matrix == 0, np.inf, abs_matrix).min()
     min_val_decimal = Decimal(str(min_val))
-    return min_val_decimal.as_tuple().exponent
+    return min_val_decimal.as_tuple().exponent + 7

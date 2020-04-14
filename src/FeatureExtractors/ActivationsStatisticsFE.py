@@ -36,7 +36,7 @@ class ActivationsStatisticsFE(BaseFE):
             # scaler = MinMaxScaler()
             # layer_activations_transposed_scaled = scaler.fit_transform(layer_activations).T
             scaler_exponent = get_scaler_exponent(layer_activations_transposed)
-            layer_activations_transposed_scaled = layer_activations_transposed * (10 ** scaler_exponent)
+            layer_activations_transposed_scaled = layer_activations_transposed * (10 ** -scaler_exponent)
 
 
             mean = np.mean(layer_activations_transposed, axis=1)
