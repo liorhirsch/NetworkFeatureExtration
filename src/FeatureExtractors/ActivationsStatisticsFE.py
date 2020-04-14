@@ -3,7 +3,7 @@ import torch
 from scipy.stats import variation, skew, kurtosis
 from sklearn.preprocessing import MinMaxScaler
 from .BaseFE import BaseFE
-from ..utils import pad_with_columns, pad_with_rows
+from ..utils import pad_with_columns, pad_with_rows, get_scaler_exponent
 
 
 class ActivationsStatisticsFE(BaseFE):
@@ -33,8 +33,10 @@ class ActivationsStatisticsFE(BaseFE):
 
         for layer_activations in all_activations_in_important_layers:
             layer_activations_transposed = np.array(layer_activations).T
-            scaler = MinMaxScaler()
-            layer_activations_transposed_scaled = scaler.fit_transform(layer_activations).T
+            # scaler = MinMaxScaler()
+            # layer_activations_transposed_scaled = scaler.fit_transform(layer_activations).T
+            scaler_exponent = get_scaler_exponent(layer_activations_transposed)
+            layer_activations_transposed_scaled = layer_activations_transposed * (10 ** scaler_exponent)
 
 
             mean = np.mean(layer_activations_transposed, axis=1)
