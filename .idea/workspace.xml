@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="" />
+    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +79,7 @@
       <updated>1582963236945</updated>
       <workItem from="1582963238117" duration="52669000" />
       <workItem from="1586011434102" duration="2837000" />
-      <workItem from="1586019272632" duration="21829000" />
+      <workItem from="1586019272632" duration="24377000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -289,7 +291,13 @@
       <option name="presentableId" value="LOCAL‎00035" />
       <updated>1586889159797</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL‎00036" summary="- Change the scaler for the calculation of skewness and kutrosis">
+      <created>1586889611946</created>
+      <option name="number" value="LOCAL‎00036" />
+      <option name="presentableId" value="LOCAL‎00036" />
+      <updated>1586889611946</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
