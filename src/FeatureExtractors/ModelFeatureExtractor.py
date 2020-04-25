@@ -8,12 +8,14 @@ from ..ModelWithRows import ModelWithRows
 
 
 class FeatureExtractor:
-    def __init__(self, model, X):
+    def __init__(self, model, X, device):
+        self.device = device
+
         self.model_with_rows = ModelWithRows(model)
 
         self.all_feature_extractors: List[BaseFE] = [
             TopologyFE(self.model_with_rows),
-            ActivationsStatisticsFE(self.model_with_rows, X),
+            ActivationsStatisticsFE(self.model_with_rows, X, self.device),
             WeightStatisticsFE(self.model_with_rows)
         ]
 
