@@ -78,5 +78,5 @@ all_activations_in_important_layers = []
 
 def save_activations(self, input, output):
     global all_activations_in_important_layers
-    all_activations_in_important_layers.append(output.detach().numpy())
+    all_activations_in_important_layers.append(output.detach().cpu().numpy())
     return None

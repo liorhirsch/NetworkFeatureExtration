@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="- Change the scaler for the calculation of skewness and kutrosis">
+    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,7 +80,7 @@
       <workItem from="1582963238117" duration="52669000" />
       <workItem from="1586011434102" duration="2837000" />
       <workItem from="1586019272632" duration="25039000" />
-      <workItem from="1587307891414" duration="1574000" />
+      <workItem from="1587307891414" duration="2273000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -304,7 +304,13 @@
       <option name="presentableId" value="LOCAL‎00037" />
       <updated>1586937769941</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL‎00038" summary="- Add dupport for device">
+      <created>1587827961298</created>
+      <option name="number" value="LOCAL‎00038" />
+      <option name="presentableId" value="LOCAL‎00038" />
+      <updated>1587827961299</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +354,8 @@
     <MESSAGE value="Change topolgy fm size to 5" />
     <MESSAGE value="- ActivationFM - Calculate kurtosis and skewness with scaled activations" />
     <MESSAGE value="- Change the scaler for the calculation of skewness and kutrosis" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Change the scaler for the calculation of skewness and kutrosis" />
+    <MESSAGE value="- Add dupport for device" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add dupport for device" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -370,7 +377,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/FeatureExtractors/ActivationsStatisticsFE.py</url>
-          <line>28</line>
+          <line>29</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
