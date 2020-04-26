@@ -14,7 +14,7 @@ def pad_with_rows(f_map, rows_target):
 
 def get_scaler_exponent(matrix):
     abs_matrix = np.abs(matrix)
-    min_val = np.where(abs_matrix == 0, np.inf, abs_matrix).min()
+    min_val = np.where(abs_matrix == 0, 0, abs_matrix).min()
     val_as_string = str(min_val)
     min_val_decimal = Decimal(val_as_string)
     adder = 0
@@ -22,6 +22,7 @@ def get_scaler_exponent(matrix):
         adder = len(val_as_string.split(".")[1].split('e')[0])
 
     if type(min_val_decimal.as_tuple().exponent) != int:
+        print(adder)
         print(abs_matrix)
         print(val_as_string)
         print(min_val_decimal)
