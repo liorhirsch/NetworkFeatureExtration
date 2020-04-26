@@ -22,6 +22,8 @@ def get_scaler_exponent(matrix):
         adder = len(val_as_string.split(".")[1].split('e')[0])
 
     if type(min_val_decimal.as_tuple().exponent) != int:
+        print(abs_matrix)
+        print(val_as_string)
         print(min_val_decimal)
         print(min_val_decimal.as_tuple().exponent)
 

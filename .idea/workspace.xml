@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +80,7 @@
       <workItem from="1582963238117" duration="52669000" />
       <workItem from="1586011434102" duration="2837000" />
       <workItem from="1586019272632" duration="25039000" />
-      <workItem from="1587307891414" duration="3068000" />
+      <workItem from="1587307891414" duration="3690000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -317,7 +316,13 @@
       <option name="presentableId" value="LOCAL‎00039" />
       <updated>1587828665569</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL‎00040" summary="Fix Bug">
+      <created>1587923913060</created>
+      <option name="number" value="LOCAL‎00040" />
+      <option name="presentableId" value="LOCAL‎00040" />
+      <updated>1587923913060</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +342,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add TODO" />
     <MESSAGE value="- Extract pad_layer_outputs to utils&#10;- Start using types&#10;- Add Weight Statistics Feature Extration" />
     <MESSAGE value="- Optimize Imports&#10;- Beautify" />
     <MESSAGE value="- Add support for 1d batch norm&#10;- Run Feature extraction for all datasets" />
@@ -362,7 +366,8 @@
     <MESSAGE value="- ActivationFM - Calculate kurtosis and skewness with scaled activations" />
     <MESSAGE value="- Change the scaler for the calculation of skewness and kutrosis" />
     <MESSAGE value="- Add dupport for device" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Add dupport for device" />
+    <MESSAGE value="Fix Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
