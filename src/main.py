@@ -17,7 +17,7 @@ def load_checkpoint(filepath, device) -> LoadedModel:
     for parameter in model.parameters():
         parameter.requires_grad = False
 
-    model.eval()
+    # model.eval()
 
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
     optimizer.load_state_dict(checkpoint['optimizer'])

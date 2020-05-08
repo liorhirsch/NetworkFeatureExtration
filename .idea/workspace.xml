@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="" />
+    <list default="true" id="0d043b00-a639-4e43-8867-0d06041f7930" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +24,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CopressionAgent" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -78,7 +80,7 @@
       <workItem from="1582963238117" duration="52669000" />
       <workItem from="1586011434102" duration="2837000" />
       <workItem from="1586019272632" duration="25039000" />
-      <workItem from="1587307891414" duration="3974000" />
+      <workItem from="1587307891414" duration="6750000" />
     </task>
     <task id="LOCAL‎00001" summary="Add TODO">
       <created>1582963291777</created>
@@ -326,7 +328,13 @@
       <option name="presentableId" value="LOCAL‎00041" />
       <updated>1587929766970</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL‎00042" summary="Fix Bug">
+      <created>1587930094070</created>
+      <option name="number" value="LOCAL‎00042" />
+      <option name="presentableId" value="LOCAL‎00042" />
+      <updated>1587930094070</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
