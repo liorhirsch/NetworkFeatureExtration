@@ -10,13 +10,18 @@ Six feature maps are extracted in each step. The feature maps contains three 'fa
 For each family type, 2 feature maps are constructed; one for the whole network and one for the wanted layer.
 ### Network feature maps:
 #### Architectural feature maps:
+![alt text](https://github.com/liorhirsch/NetworkFeatureExtration/blob/master/example%20architecture%20model%20fm.png)
 
 #### Activation & wights feature maps:
+![alt text](https://github.com/liorhirsch/NetworkFeatureExtration/blob/master/example%20activation%26weights%20fm.png)
 
 ### Network feature maps:
+
 #### Architectural feature maps:
+The layer's architectural feature map is represented similar to the network's architecture fm, but contains only one row according to the selected layer.
 
 #### Activation & wights feature maps:
+![alt text](https://github.com/liorhirsch/NetworkFeatureExtration/blob/master/layer%20activation%20weight%20fm.png)
 
 ## Code Example
 The main class is `FeatureExtractor`. This class is initlized with the model, the train data (without the target column) and the device (cpu/gpu)
