@@ -20,18 +20,19 @@ class WeightStatisticsFE(BaseFE):
 
         moment_map = [[], [], [], []]
         min_max_map = [[], []]
+        norm_map = [[], []]
 
         for curr_layer in layer_weights_for_each_row:
             if type(curr_layer) == Linear:
-                self.handle_linear_layer(curr_layer, min_max_map, moment_map)
+                self.handle_linear_layer(curr_layer, min_max_map, moment_map, norm_map)
 
-        weights_map = np.array([*moment_map, *min_max_map])
+        weights_map = np.array([*moment_map, *min_max_map, *norm_map])
 
         weights_map = np.array(list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),weights_map)))
 
         return (weights_map, weights_map[:,layer_index,:])
 
-    def handle_linear_layer(self, curr_layer, min_max_map, moment_map):
+    def handle_linear_layer(self, curr_layer, min_max_map, moment_map, norm_map):
         linear_layer: Linear = curr_layer
         curr_layer_weights = linear_layer.weight.tolist()
 
@@ -47,6 +48,12 @@ class WeightStatisticsFE(BaseFE):
 
         min_max_map[0].append(min_per_neuron)
         min_max_map[1].append(max_per_neuron)
+
+        l1_per_neuron = np.linalg.norm(curr_layer_weights, axis=1, ord=1)
+        l2_per_neuron = np.linalg.norm(curr_layer_weights, axis=1, ord=2)
+
+        norm_map[0].append(pad_with_columns(l1_per_neuron, self.MAX_LAYER_SIZE))
+        norm_map[1].append(pad_with_columns(l2_per_neuron, self.MAX_LAYER_SIZE))
 
         for i, curr_moment in enumerate(all_moments_padded):
             moment_map[i].append(curr_moment)

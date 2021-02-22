@@ -17,19 +17,20 @@ class ActivationsStatisticsFE(BaseFE):
     def extract_feature_map(self, layer_index):
         moment_map = [[], [], [], []]
         min_max_map = [[], []]
+        norm_map = [[], []]
 
         unregister_hook_functions = self.build_register_forward_hooks_to_important_layers()
         all_activations_in_important_layers.clear()
         self.model_with_rows.model(torch.Tensor(self.dataset_x).to(self.device))
         [x.remove() for x in unregister_hook_functions]
-        self.calculate_moments_for_each_layer(moment_map, min_max_map)
-        activations_map = np.array([*moment_map, *min_max_map])
+        self.calculate_stats_for_each_layer(moment_map, min_max_map, norm_map)
+        activations_map = np.array([*moment_map, *min_max_map, *norm_map])
 
         activations_map = np.array(list(map(lambda f_map : pad_with_rows(f_map, self.MAX_LAYERS),activations_map)))
 
         return (activations_map, activations_map[:,layer_index,:])
 
-    def calculate_moments_for_each_layer(self, moment_map, min_max_map):
+    def calculate_stats_for_each_layer(self, moment_map, min_max_map, norm_map):
         base_feature_map = np.zeros((self.MAX_LAYERS, self.MAX_LAYER_SIZE))
 
         for layer_activations in all_activations_in_important_layers:
@@ -53,6 +54,12 @@ class ActivationsStatisticsFE(BaseFE):
 
             min_max_map[0].append(pad_with_columns(min_per_neuron, self.MAX_LAYER_SIZE))
             min_max_map[1].append(pad_with_columns(max_per_neuron, self.MAX_LAYER_SIZE))
+
+            l1_per_neuron = np.linalg.norm(layer_activations_transposed, axis=1, ord=1)
+            l2_per_neuron = np.linalg.norm(layer_activations_transposed, axis=1, ord=2)
+
+            norm_map[0].append(pad_with_columns(l1_per_neuron, self.MAX_LAYER_SIZE))
+            norm_map[1].append(pad_with_columns(l2_per_neuron, self.MAX_LAYER_SIZE))
 
             for m in range(0, 4):
                 moment_map[m].append(pad_with_columns(all_moments[m], self.MAX_LAYER_SIZE))
