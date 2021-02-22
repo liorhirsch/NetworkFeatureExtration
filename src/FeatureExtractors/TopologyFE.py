@@ -2,7 +2,7 @@ from enum import Enum
 
 import numpy as np
 import torch
-
+import pandas as pd
 from ..FeatureExtractors.BaseFE import BaseFE
 
 
@@ -45,9 +45,23 @@ class TopologyFE(BaseFE):
     def extract_feature_map(self, layer_index):
         topology_map = np.zeros((self.MAX_LAYERS, 5))
 
+        all_category_columns = ['activation_0.0', 'activation_1.0', 'activation_2.0', 'activation_3.0',
+                                'activation_4.0']
+
         for i, curr_row in enumerate(self.model_with_rows.all_rows):
             for curr_layer in curr_row:
                 self.layer_type_to_function[type(curr_layer)](curr_layer, topology_map[i])
+
+        df = pd.DataFrame(topology_map, columns=['batchnorm', 'activation', 'dropout', 'in_features', 'out_features'])
+        df_activations = pd.DataFrame({'activation':df['activation'].astype('category')})
+        df_activations = pd.get_dummies(df_activations)
+        df_activations['activation_0.0'] = 0
+
+        df_activations = df_activations.T.reindex(all_category_columns).T.fillna(0)
+        df = pd.concat([df, df_activations], axis=1)
+        df = df.drop(columns=['activation', all_category_columns[0]])
+
+        topology_map = df.to_numpy()
 
         return (topology_map, topology_map[layer_index])
 
